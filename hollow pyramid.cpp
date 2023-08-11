@@ -5,26 +5,33 @@ using namespace std;
 
 int main()
 {
-    int rows, i, j, space;
+    int rows;
 
     cout << "Enter number of rows: ";
     cin >> rows;
 
-    for (i = 1; i <= rows; i++)
+    for (int i = 1; i <= rows; i++)
     {
-        //for loop to put space in pyramid
-        for (space = i; space < rows; space++)
-            cout << " ";
+        // Print leading spaces
+        cout << string(rows - i, ' ');
 
-        //for loop to print star
-        for (j = 1; j <= (2 * rows - 1); j++)
+        // Print the first star
+        cout << "*";
+
+        // Print the hollow spaces or stars
+        if (i > 1)
         {
-            if (i == rows || j == 1 || j == 2 * i - 1)
-                cout << "*";
+            if (i == rows)
+                cout << string(2 * i - 3, '*');
             else
-                cout << " ";
+                cout << string(2 * i - 3, ' ');
+
+            // Print the last star if not the top row
+            cout << "*";
         }
+
         cout << "\n";
     }
+
     return 0;
 }
